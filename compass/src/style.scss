@@ -1,0 +1,48 @@
+@import "fluid-grid";
+
+$fluid-grid-set-box-sizing: false;
+
+@include small-fluid-grid();
+
+body
+{
+	font-family: sans-serif;
+}
+
+.inner
+{
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.small-row, .large-row, .row, .custom-row 
+{
+	span, .multi
+	{
+		display: block;
+		background: #eee;
+		padding: 0.5em;
+		text-align: center;
+		
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+		font-size: 0.8em;
+		
+		border: 1px solid #ddd;
+		
+		span
+		{
+			background: #ddd;
+			border-color: #ccc;
+		}
+	}
+}
+
+span.large
+{
+	display: none;
+}
+
+
+// Build a custom grid
+@include fluid-grid(24, 0, custom);
