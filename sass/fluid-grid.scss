@@ -21,9 +21,23 @@ $large-grid-prefix: 'large' !default;
 // Build the classes needed for a grid
 @mixin fluid-grid($count, $margin, $prefix)
 {
+	%#{$prefix}-col
+	{
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	
+		min-height: 1px;
+		float: left;
+		display: block;
+		margin-left: $margin*0.5%;
+		margin-right: $margin*0.5%;
+	}
+	
 	// Create the row classes
 	.#{$prefix}-row
 	{
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
 		@include fluid-row($margin);
 	}
 
@@ -32,6 +46,8 @@ $large-grid-prefix: 'large' !default;
 	{
 		.#{$prefix}-col-#{$i}
 		{
+			@extend %#{$prefix}-col;
+			
 			@include fluid-column($i, $count, $margin);
 		}
 	}
@@ -58,12 +74,6 @@ $large-grid-prefix: 'large' !default;
 {
 	$margin-actual: $margin/2;
 	
-	@if($fluid-grid-set-box-sizing)
-	{
-		-webkit-box-sizing: border-box;
-		box-sizing: border-box;	
-	}
-	
 	overflow: hidden;
 	margin-left: 0% - ($margin-actual);
 	margin-right: 0% - ($margin-actual);
@@ -81,23 +91,18 @@ $large-grid-prefix: 'large' !default;
 {
 	$margin-actual: $margin/2;
 	$single-width: (100% - ($count * $margin)) / $count;
-	
-	@if($fluid-grid-set-box-sizing)
-	{
-		-webkit-box-sizing: border-box;
-		box-sizing: border-box;	
-	}
-	
-	margin-left: $margin*0.5%;
-	margin-right: $margin*0.5%;
-	float: left;
-	display: block;
+
 	width: ($cols * $single-width) + (($cols - 1) * $margin);
+}
+
+%fluid-centered
+{
+	margin-left: auto !important;
+	margin-right: auto !important;
+	float: none !important;
 }
 
 @mixin fluid-centered()
 {
-	margin-left: auto;
-	margin-right: auto;
-	float: none !important;
+	@extend %fluid-centered;
 }

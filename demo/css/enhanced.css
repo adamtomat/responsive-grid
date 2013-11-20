@@ -1,89 +1,92 @@
-/* line 26, ../../sass/fluid-grid.scss */
-.large-row { overflow: hidden; margin-left: -1%; margin-right: -1%; clear: both; }
+/* line 99, ../../sass/fluid-grid.scss */
+.large-centered { margin-left: auto !important; margin-right: auto !important; float: none !important; }
 
-/* line 34, ../../sass/fluid-grid.scss */
-.large-col-1 { margin-left: 1%; margin-right: 1%; float: left; display: block; width: 6.33333%; }
+/* line 25, ../../sass/fluid-grid.scss */
+.large-col-1, .large-col-2, .large-col-3, .large-col-4, .large-col-5, .large-col-6, .large-col-7, .large-col-8, .large-col-9, .large-col-10, .large-col-11, .large-col-12 { -webkit-box-sizing: border-box; box-sizing: border-box; min-height: 1px; float: left; display: block; margin-left: 1%; margin-right: 1%; }
 
-/* line 34, ../../sass/fluid-grid.scss */
-.large-col-2 { margin-left: 1%; margin-right: 1%; float: left; display: block; width: 14.66667%; }
+/* line 38, ../../sass/fluid-grid.scss */
+.large-row { -webkit-box-sizing: border-box; box-sizing: border-box; overflow: hidden; margin-left: -1%; margin-right: -1%; clear: both; }
 
-/* line 34, ../../sass/fluid-grid.scss */
-.large-col-3 { margin-left: 1%; margin-right: 1%; float: left; display: block; width: 23%; }
+/* line 48, ../../sass/fluid-grid.scss */
+.large-col-1 { width: 6.33333%; }
 
-/* line 34, ../../sass/fluid-grid.scss */
-.large-col-4 { margin-left: 1%; margin-right: 1%; float: left; display: block; width: 31.33333%; }
+/* line 48, ../../sass/fluid-grid.scss */
+.large-col-2 { width: 14.66667%; }
 
-/* line 34, ../../sass/fluid-grid.scss */
-.large-col-5 { margin-left: 1%; margin-right: 1%; float: left; display: block; width: 39.66667%; }
+/* line 48, ../../sass/fluid-grid.scss */
+.large-col-3 { width: 23%; }
 
-/* line 34, ../../sass/fluid-grid.scss */
-.large-col-6 { margin-left: 1%; margin-right: 1%; float: left; display: block; width: 48%; }
+/* line 48, ../../sass/fluid-grid.scss */
+.large-col-4 { width: 31.33333%; }
 
-/* line 34, ../../sass/fluid-grid.scss */
-.large-col-7 { margin-left: 1%; margin-right: 1%; float: left; display: block; width: 56.33333%; }
+/* line 48, ../../sass/fluid-grid.scss */
+.large-col-5 { width: 39.66667%; }
 
-/* line 34, ../../sass/fluid-grid.scss */
-.large-col-8 { margin-left: 1%; margin-right: 1%; float: left; display: block; width: 64.66667%; }
+/* line 48, ../../sass/fluid-grid.scss */
+.large-col-6 { width: 48%; }
 
-/* line 34, ../../sass/fluid-grid.scss */
-.large-col-9 { margin-left: 1%; margin-right: 1%; float: left; display: block; width: 73%; }
+/* line 48, ../../sass/fluid-grid.scss */
+.large-col-7 { width: 56.33333%; }
 
-/* line 34, ../../sass/fluid-grid.scss */
-.large-col-10 { margin-left: 1%; margin-right: 1%; float: left; display: block; width: 81.33333%; }
+/* line 48, ../../sass/fluid-grid.scss */
+.large-col-8 { width: 64.66667%; }
 
-/* line 34, ../../sass/fluid-grid.scss */
-.large-col-11 { margin-left: 1%; margin-right: 1%; float: left; display: block; width: 89.66667%; }
+/* line 48, ../../sass/fluid-grid.scss */
+.large-col-9 { width: 73%; }
 
-/* line 34, ../../sass/fluid-grid.scss */
-.large-col-12 { margin-left: 1%; margin-right: 1%; float: left; display: block; width: 98%; }
+/* line 48, ../../sass/fluid-grid.scss */
+.large-col-10 { width: 81.33333%; }
 
-/* line 43, ../../sass/fluid-grid.scss */
+/* line 48, ../../sass/fluid-grid.scss */
+.large-col-11 { width: 89.66667%; }
+
+/* line 48, ../../sass/fluid-grid.scss */
+.large-col-12 { width: 98%; }
+
+/* line 59, ../../sass/fluid-grid.scss */
 .large-offset-1 { margin-left: 9.33333%; }
 
-/* line 43, ../../sass/fluid-grid.scss */
+/* line 59, ../../sass/fluid-grid.scss */
 .large-offset-2 { margin-left: 17.66667%; }
 
-/* line 43, ../../sass/fluid-grid.scss */
+/* line 59, ../../sass/fluid-grid.scss */
 .large-offset-3 { margin-left: 26%; }
 
-/* line 43, ../../sass/fluid-grid.scss */
+/* line 59, ../../sass/fluid-grid.scss */
 .large-offset-4 { margin-left: 34.33333%; }
 
-/* line 43, ../../sass/fluid-grid.scss */
+/* line 59, ../../sass/fluid-grid.scss */
 .large-offset-5 { margin-left: 42.66667%; }
 
-/* line 43, ../../sass/fluid-grid.scss */
+/* line 59, ../../sass/fluid-grid.scss */
 .large-offset-6 { margin-left: 51%; }
 
-/* line 43, ../../sass/fluid-grid.scss */
+/* line 59, ../../sass/fluid-grid.scss */
 .large-offset-7 { margin-left: 59.33333%; }
 
-/* line 43, ../../sass/fluid-grid.scss */
+/* line 59, ../../sass/fluid-grid.scss */
 .large-offset-8 { margin-left: 67.66667%; }
 
-/* line 43, ../../sass/fluid-grid.scss */
+/* line 59, ../../sass/fluid-grid.scss */
 .large-offset-9 { margin-left: 76%; }
 
-/* line 43, ../../sass/fluid-grid.scss */
+/* line 59, ../../sass/fluid-grid.scss */
 .large-offset-10 { margin-left: 84.33333%; }
 
-/* line 43, ../../sass/fluid-grid.scss */
+/* line 59, ../../sass/fluid-grid.scss */
 .large-offset-11 { margin-left: 92.66667%; }
-
-/* line 50, ../../sass/fluid-grid.scss */
-.large-centered { margin-left: auto; margin-right: auto; float: none !important; }
 
 /* line 8, ../../compass/src/enhanced.scss */
 .demo-4-to-2 .row { overflow: hidden; margin-left: -1%; margin-right: -1%; clear: both; }
 /* line 13, ../../compass/src/enhanced.scss */
-.demo-4-to-2 .col { margin-left: 1%; margin-right: 1%; float: left; display: block; width: 23%; }
+.demo-4-to-2 .col { width: 23%; }
 /* line 18, ../../compass/src/enhanced.scss */
 .demo-4-to-2 span.mq { display: none; }
 
 @media screen and (max-width: 800px) { /* line 28, ../../compass/src/enhanced.scss */
   .demo-4-to-2 .row { overflow: hidden; margin-left: -1%; margin-right: -1%; clear: both; }
   /* line 33, ../../compass/src/enhanced.scss */
-  .demo-4-to-2 .col { margin-left: 1%; margin-right: 1%; float: left; display: block; width: 31.33333%; }
+  .demo-4-to-2 .col { width: 31.33333%; }
   /* line 37, ../../compass/src/enhanced.scss */
   .demo-4-to-2 .col:nth-child(2n+1) { margin-left: 17.66667%; }
   /* line 43, ../../compass/src/enhanced.scss */
