@@ -1,3 +1,5 @@
+// Fluid Grid by Joe Lambert (c) 2013 Rareloop Ltd (http://www.rareloop.com)
+
 @import "compass/css3/box-sizing";
 
 $small-grid-margin: 2 !default;
@@ -90,7 +92,8 @@ $fluid-grid-set-box-sizing: true !default;
 		box-sizing: border-box;	
 	}
 	
-	margin: 0 ($margin-actual)*1%;
+	margin-left: $margin*0.5%;
+	margin-right: $margin*0.5%;
 	float: left;
 	display: block;
 	width: ($cols * $single-width) + (($cols - 1) * $margin);
@@ -98,6 +101,7 @@ $fluid-grid-set-box-sizing: true !default;
 
 @mixin fluid-centered()
 {
-	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;
 	float: none !important;
 }
