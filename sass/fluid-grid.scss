@@ -1,7 +1,5 @@
 // Fluid Grid by Joe Lambert (c) 2013 Rareloop Ltd (http://www.rareloop.com)
 
-@import "compass/css3/box-sizing";
-
 $small-grid-margin: 2 !default;
 $small-grid-count: 12 !default;
 $small-grid-prefix: 'small' !default;
@@ -9,8 +7,6 @@ $small-grid-prefix: 'small' !default;
 $large-grid-margin: 2 !default;
 $large-grid-count: 12 !default;
 $large-grid-prefix: 'large' !default;
-
-$fluid-grid-set-box-sizing: true !default;
 
 @mixin small-fluid-grid()
 {
