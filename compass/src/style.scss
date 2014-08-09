@@ -1,8 +1,10 @@
-@import "fluid-grid";
+@import "../../sass/fluid-grid";
 
-$fluid-grid-set-box-sizing: false;
+// $fluid-grid-set-box-sizing: false;
 
-@include small-fluid-grid();
+// @include small-fluid-grid();
+
+@include grid($small-grid);
 
 body
 {

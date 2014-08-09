@@ -1,6 +1,8 @@
-@import "fluid-grid";
+@import "../../sass/fluid-grid";
 $fluid-grid-set-box-sizing: false;
-@include large-fluid-grid();
+// @include large-fluid-grid();
+
+@include grid($large-grid);
 
 .demo-4-to-2
 {

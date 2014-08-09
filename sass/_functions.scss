@@ -1,0 +1,26 @@
+// Fluid Grid by Joe Lambert 
+// (c) 2013 Rareloop Ltd (http://www.rareloop.com)
+
+
+// Get the width of a number of columns including inner gutters
+// @function  grid-col-width
+// @param     $count {Number} the number of columns to measure
+// @param     $columns {Number} the number of columns in the grid
+// @param     $gutter {Number} the size of the gutter
+// @return    {Number} the percentage width
+@function grid-col-width($count, $columns, $gutter: 0) {
+    $single-width: grid-single-col-width($columns, $gutter);
+
+    @return ($count * $single-width) + (($count - 1) * $gutter);
+}
+
+
+// Get the width of a single column, not including any gutter
+// @function  grid-single-col-width
+// @param     $columns {Number} the number of columns in the grid
+// @param     $gutter {Number} the size of the gutter
+// @return    {Number} the percentage width
+@function grid-single-col-width($columns, $gutter: 0) {
+    @return (100% - ($columns * $gutter)) / $columns;
+}
+
