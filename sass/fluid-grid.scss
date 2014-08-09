@@ -1,16 +1,15 @@
 // Fluid Grid by Joe Lambert 
 // (c) 2013 Rareloop Ltd (http://www.rareloop.com)
 
+
 @import 'functions';
 @import 'mixins';
 
 // Map keep track of the placeholders used for common column classes
 $grid-col-placeholder-selectors: ();
 
-//
-// Variable defaults
-// 
 
+// Variable defaults
 $small-grid: (
 	prefix: 'small',
 	columns: 12,

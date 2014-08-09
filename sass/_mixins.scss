@@ -1,6 +1,7 @@
 // Fluid Grid by Joe Lambert 
 // (c) 2013 Rareloop Ltd (http://www.rareloop.com)
 
+
 // Produce all the classes needed for a grid
 // @mixin     grid
 // @param     $grid {Map} A map representing the grid config
@@ -169,7 +170,6 @@
     left: auto;
     right: grid-col-width($count, $columns, $gutter) + $gutter;
 }
-
 
 
 %grid-centered {
