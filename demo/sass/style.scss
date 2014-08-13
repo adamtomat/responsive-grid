@@ -1,9 +1,5 @@
 @import "../../sass/fluid-grid";
 
-// $fluid-grid-set-box-sizing: false;
-
-// @include small-fluid-grid();
-
 @include grid($small-grid);
 
 body
@@ -43,4 +39,18 @@ body
 span.large
 {
 	display: none;
+}
+
+@media screen and (min-width: 40.5em) {
+	@include grid($large-grid);
+
+	span.small
+	{
+		display: none;
+	}
+
+	span.large
+	{
+		display: block;
+	}
 }

@@ -172,17 +172,12 @@
 }
 
 
-%grid-centered {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    float: none !important;
-}
-
-
 // Produce the class to center a grid column
 // @mixin     grid-centered
 // @usage:
 // @include grid-centered()
 @mixin grid-centered() {
-    @extend %grid-centered;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    float: none !important;
 }
