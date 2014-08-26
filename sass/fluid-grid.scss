@@ -14,10 +14,10 @@ $small-grid: (
 	prefix: 'small',
 	columns: 12,
 	gutter: 2
-) !global;
+) !default !global;
 
 $large-grid: (
 	prefix: 'large',
 	columns: 12,
 	gutter: 2
-) !global;
+) !default !global;
