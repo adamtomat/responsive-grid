@@ -82,44 +82,61 @@
     }
 }
 
+// The common styles used for all columns in a grid
+// @mixin     grid-col-common
+// @param     $grid {Map} A map representing the grid config
+// @usage:
+// @include grid-col-common($small-grid)
+@mixin grid-col-common($grid) {
+    $gutter: map-get($grid, gutter);
+    
+    // Properties common to all columns
+    float: left;
+
+    margin-left: $gutter*0.5%;
+    margin-right: $gutter*0.5%;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
 // Produce the class for a grid column
-// @mixin     grid-column
+// @mixin     grid-col
 // @param     $grid {Map} A map representing the grid config
 // @param     $count {Number} The number of columns to span
+// @param     $extend {Boolean} Whether to extend or output the shared styles directly (defaults to `true`)
 // @usage:
-// @include grid-column($small-grid, 2)
-@mixin grid-col($grid, $count) {
+// @include grid-col($small-grid, 2)
+@mixin grid-col($grid, $count, $extend: true) {
     $columns: map-get($grid, columns);
     $gutter: map-get($grid, gutter);
     $prefix: map-get($grid, prefix);
+    
+    @if $extend {
+        // Have we created a placeholder for the margin yet?
+        $placeholder-selector: map-get($grid-col-placeholder-selectors, $prefix);
 
-    // Have we created a placeholder for the margin yet?
-    $placeholder-selector: map-get($grid-col-placeholder-selectors, $prefix);
+        @if $placeholder-selector == null {
+            // Create a unique name for the placeholder class
+            $placeholder-selector: unique-id();
 
-    @if $placeholder-selector == null {
-        // Create a unique name for the placeholder class
-        $placeholder-selector: unique-id();
+            // Add the placeholder at the root of the doc so we can extend it
+            @at-root %#{$placeholder-selector} {
+                // Properties common to all columns
+                @include grid-col-common($grid);
+            }
 
-        // Add the placeholder at the root of the doc so we can extend it
-        @at-root %#{$placeholder-selector} {
-            // Properties common to all columns
-            float: left;
-
-            margin-left: $gutter*0.5%;
-            margin-right: $gutter*0.5%;
-
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
+            // Save the placeholder reference for future uses
+            $grid-col-placeholder-selectors: map-merge($grid-col-placeholder-selectors, ($prefix: $placeholder-selector)) !global;
         }
 
-        // Save the placeholder reference for future uses
-        $grid-col-placeholder-selectors: map-merge($grid-col-placeholder-selectors, ($prefix: $placeholder-selector)) !global;
+        // Extend the placholder for the common properties;
+        @extend %#{$placeholder-selector};
     }
-
-    // Extend the placholder for the common properties;
-    @extend %#{$placeholder-selector};
+    @else {
+        @include grid-col-common($grid);
+    }
 
     // Set the width
     width: grid-col-width($count, $columns, $gutter);
