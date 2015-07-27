@@ -1,4 +1,4 @@
-// Fluid Grid by Joe Lambert 
+// Fluid Grid by Joe Lambert
 // (c) 2013 Rareloop Ltd (http://www.rareloop.com)
 
 
@@ -56,29 +56,31 @@
 // @param     $grid {Map} A map representing the grid config
 // @usage:
 // @include grid-row($small-grid)
-@mixin grid-row($grid) {
+@mixin grid-row($grid, $clearfix: true) {
     $gutter: map-get($grid, gutter);
 
     margin-left: $gutter*-0.5%;
     margin-right: $gutter*-0.5%;
 
-    // Clearfix (http://nicolasgallagher.com/micro-clearfix-hack/)
-    &:before,
-    &:after {
-        content: " "; /* 1 */
-        display: table; /* 2 */
-    }
+    @if($clearfix) {
+        // Clearfix (http://nicolasgallagher.com/micro-clearfix-hack/)
+        &:before,
+        &:after {
+            content: " "; /* 1 */
+            display: table; /* 2 */
+        }
 
-    &:after {
-        clear: both;
-    }
+        &:after {
+            clear: both;
+        }
 
-    /**
-     * For IE 6/7 only
-     * Include this rule to trigger hasLayout and contain floats.
-     */
-    & {
-        *zoom: 1;
+        /**
+         * For IE 6/7 only
+         * Include this rule to trigger hasLayout and contain floats.
+         */
+        & {
+            *zoom: 1;
+        }
     }
 }
 
@@ -89,7 +91,7 @@
 // @include grid-col-common($small-grid)
 @mixin grid-col-common($grid) {
     $gutter: map-get($grid, gutter);
-    
+
     // Properties common to all columns
     float: left;
 
@@ -112,7 +114,7 @@
     $columns: map-get($grid, columns);
     $gutter: map-get($grid, gutter);
     $prefix: map-get($grid, prefix);
-    
+
     @if $extend {
         // Have we created a placeholder for the margin yet?
         $placeholder-selector: map-get($grid-col-placeholder-selectors, $prefix);
