@@ -1,0 +1,185 @@
+// Fluid Grid by Joe Lambert
+// (c) 2013 Rareloop Ltd (http://www.rareloop.com)
+
+
+// Produce all the classes needed for a grid
+// @mixin     grid
+// @param     $grid {Map} A map representing the grid config
+// @usage:
+// @include grid($small-grid)
+@mixin grid($grid) {
+    $prefix: map-get($grid, prefix);
+    $columns: map-get($grid, columns);
+
+    // Produce the row class
+    .#{$prefix}-row {
+        @include grid-row($grid);
+    }
+
+    // Produce the column classes
+    @for $i from 1 through $columns {
+        .#{$prefix}-col-#{$i} {
+            @include grid-col($grid, $i);
+        }
+    }
+
+    // Produce modifier classes
+    @for $i from 1 through $columns - 1 {
+        .#{$prefix}-offset-#{$i} {
+            @include grid-offset($grid, $i);
+        }
+
+        .#{$prefix}-push-#{$i} {
+            @include grid-push($grid, $i);
+        }
+
+        .#{$prefix}-pull-#{$i} {
+            @include grid-pull($grid, $i);
+        }
+    }
+
+    // Produce centered classes
+    .#{$prefix}-centered {
+        @include grid-centered;
+    }
+}
+
+
+// Produce the class for a grid row
+// @mixin     grid-row
+// @param     $grid {Map} A map representing the grid config
+// @usage:
+// @include grid-row($small-grid)
+@mixin grid-row($grid, $clearfix: true) {
+    $gutter: map-get($grid, gutter);
+
+    margin-left: $gutter * -0.5;
+    margin-right: $gutter * -0.5;
+
+    @if($clearfix) {
+        // Clearfix (http://nicolasgallagher.com/micro-clearfix-hack/)
+        &:before,
+        &:after {
+            display: table;
+
+            content: ' ';
+        }
+
+        &:after {
+            clear: both;
+        }
+    }
+}
+
+// The common styles used for all columns in a grid
+// @mixin     grid-col-common
+// @param     $grid {Map} A map representing the grid config
+// @usage:
+// @include grid-col-common($small-grid)
+@mixin grid-col-common($grid) {
+    $gutter: map-get($grid, gutter);
+
+    // Properties common to all columns
+    float: left;
+
+    padding-left: $gutter * 0.5;
+    padding-right: $gutter * 0.5;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+// Produce the class for a grid column
+// @mixin     grid-col
+// @param     $grid {Map} A map representing the grid config
+// @param     $count {Number} The number of columns to span
+// @param     $extend {Boolean} Whether to extend or output the shared styles directly (defaults to `true`)
+// @usage:
+// @include grid-col($small-grid, 2)
+@mixin grid-col($grid, $count, $extend: true) {
+    $columns: map-get($grid, columns);
+    $gutter: map-get($grid, gutter);
+    $prefix: map-get($grid, prefix);
+
+    @if $extend {
+        // Have we created a placeholder for the margin yet?
+        $placeholder-selector: map-get($grid-col-placeholder-selectors, $prefix);
+
+        @if $placeholder-selector == null {
+            // Create a unique name for the placeholder class
+            $placeholder-selector: unique-id();
+
+            // Add the placeholder at the root of the doc so we can extend it
+            @at-root %#{$placeholder-selector} {
+                // Properties common to all columns
+                @include grid-col-common($grid);
+            }
+
+            // Save the placeholder reference for future uses
+            $grid-col-placeholder-selectors: map-merge($grid-col-placeholder-selectors, ($prefix: $placeholder-selector)) !global;
+        }
+
+        // Extend the placholder for the common properties;
+        @extend %#{$placeholder-selector};
+    } @else {
+        @include grid-col-common($grid);
+    }
+
+    // Set the width
+    width: grid-col-width($count, $columns);
+}
+
+
+// Produce the class to offset a grid column
+// @mixin     grid-offset
+// @param     $grid {Map} A map representing the grid config
+// @param     $count {Number} The number of columns to offset by
+// @usage:
+// @include grid-offset($small-grid, 2)
+@mixin grid-offset($grid, $count) {
+    $columns: map-get($grid, columns);
+
+    margin-left: grid-col-width($count, $columns);
+}
+
+
+// Produce the class to push a grid column right
+// @mixin     grid-push
+// @param     $grid {Map} A map representing the grid config
+// @param     $count {Number} The number of columns to push by
+// @usage:
+// @include grid-push($small-grid, 2)
+@mixin grid-push($grid, $count) {
+    $columns: map-get($grid, columns);
+
+    position: relative;
+    right: auto;
+    left: grid-col-width($count, $columns);
+}
+
+
+// Produce the class to pull a grid column left
+// @mixin     grid-pull
+// @param     $grid {Map} A map representing the grid config
+// @param     $count {Number} The number of columns to pull by
+// @usage:
+// @include grid-pull($small-grid, 2)
+@mixin grid-pull($grid, $count) {
+    $columns: map-get($grid, columns);
+
+    position: relative;
+    left: auto;
+    right: grid-col-width($count, $columns);
+}
+
+
+// Produce the class to center a grid column
+// @mixin     grid-centered
+// @usage:
+// @include grid-centered()
+@mixin grid-centered() {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    float: none !important;
+}

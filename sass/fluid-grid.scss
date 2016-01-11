@@ -1,179 +1,23 @@
-// Fluid Grid by Joe Lambert (c) 2013 Rareloop Ltd (http://www.rareloop.com)
+// Fluid Grid by Joe Lambert
+// (c) 2013 Rareloop Ltd (http://www.rareloop.com)
 
 
-//
+@import 'functions';
+@import 'mixins';
+
+// Map keep track of the placeholders used for common column classes
+$grid-col-placeholder-selectors: ();
+
+
 // Variable defaults
-// 
+$small-grid: (
+    prefix: 'small',
+    columns: 12,
+    gutter: 16px
+) !default !global;
 
-$small-grid-margin: 2 !default;
-$small-grid-count: 12 !default;
-$small-grid-prefix: 'small' !default;
-
-$large-grid-margin: 2 !default;
-$large-grid-count: 12 !default;
-$large-grid-prefix: 'large' !default;
-
-
-//
-// Mixins to generate the small & large grids
-//
-
-@mixin small-fluid-grid()
-{
-	@include fluid-grid($small-grid-count, $small-grid-margin, $small-grid-prefix);
-}
-
-@mixin large-fluid-grid()
-{
-	@include fluid-grid($large-grid-count, $large-grid-margin, $large-grid-prefix);
-}
-
-
-//
-// Build the classes needed for a grid
-//
-
-@mixin fluid-grid($count, $margin, $prefix)
-{
-	// Setup the defaults for all columns
-	[class^=#{$prefix}-col]
-	{
-		-webkit-box-sizing: border-box;
-		box-sizing: border-box;
-	
-		min-height: 1px;
-		float: left;
-		display: block;
-		margin-left: $margin*0.5%;
-		margin-right: $margin*0.5%;
-	}
-	
-	// Create the row classes
-	.#{$prefix}-row
-	{
-		-webkit-box-sizing: border-box;
-		box-sizing: border-box;
-		@include fluid-row($margin);
-	}
-
-	// Create the column classes
-	@for $i from 1 through $count
-	{
-		.#{$prefix}-col-#{$i}
-		{
-			@include fluid-column($i, $count, $margin);
-		}
-	}
-
-	// Create the offset/push/pull classes
-	@for $i from 1 through $count - 1
-	{
-		.#{$prefix}-offset-#{$i}
-		{
-			//margin-left: ($i * $single-width) + ($i * $margin) + $margin-actual;
-			@include fluid-offset($i, $count, $margin);
-		}
-		
-		.#{$prefix}-push-#{$i}
-		{
-			//margin-left: ($i * $single-width) + ($i * $margin) + $margin-actual;
-			@include fluid-push($i, $count, $margin);
-		}
-		
-		.#{$prefix}-pull-#{$i}
-		{
-			//margin-left: ($i * $single-width) + ($i * $margin) + $margin-actual;
-			@include fluid-pull($i, $count, $margin);
-		}
-	}
-	
-	.#{$prefix}-centered
-	{
-		@include fluid-centered();
-	}
-}
-
-
-//
-// Output styles needed for a row
-//
-
-@mixin fluid-row($margin: $small-grid-margin)
-{
-	$margin-actual: $margin/2;
-	
-	overflow: hidden;
-	margin-left: 0% - ($margin-actual);
-	margin-right: 0% - ($margin-actual);
-	clear: both;
-}
-
-
-//
-// Output styles to offset a column
-//
-
-@mixin fluid-offset($offset, $count: $small-grid-count, $margin: $small-grid-margin)
-{
-	$margin-actual: $margin/2;
-	$single-width: (100% - ($count * $margin)) / $count;
-	margin-left: ($offset * $single-width) + ($offset * $margin) + $margin-actual;
-}
-
-
-//
-// Output styles to push a column
-//
-
-@mixin fluid-push($offset, $count: $small-grid-count, $margin: $small-grid-margin)
-{
-	$margin-actual: $margin/2;
-	$single-width: (100% - ($count * $margin)) / $count;
-	position: relative;
-	left: ($offset * $single-width) + ($offset * $margin);
-	right: auto;
-}
-
-
-//
-// Output styles to pull a column
-//
-
-@mixin fluid-pull($offset, $count: $small-grid-count, $margin: $small-grid-margin)
-{
-	$margin-actual: $margin/2;
-	$single-width: (100% - ($count * $margin)) / $count;
-	position: relative;
-	right: ($offset * $single-width) + ($offset * $margin);
-	left: auto;
-}
-
-
-//
-// Output styles needed for a column
-//
-
-@mixin fluid-column($cols, $count: $small-grid-count, $margin: $small-grid-margin)
-{
-	$margin-actual: $margin/2;
-	$single-width: (100% - ($count * $margin)) / $count;
-
-	width: ($cols * $single-width) + (($cols - 1) * $margin);
-}
-
-
-//
-// Output styles needed to center a column within a row
-//
-
-%fluid-centered
-{
-	margin-left: auto !important;
-	margin-right: auto !important;
-	float: none !important;
-}
-
-@mixin fluid-centered()
-{
-	@extend %fluid-centered;
-}
+$large-grid: (
+    prefix: 'large',
+    columns: 12,
+    gutter: 16px
+) !default !global;
