@@ -17,29 +17,23 @@
     }
 
     // Produce the column classes
-    @for $i from 1 through $columns
-    {
-        .#{$prefix}-col-#{$i}
-        {
+    @for $i from 1 through $columns {
+        .#{$prefix}-col-#{$i} {
             @include grid-col($grid, $i);
         }
     }
 
     // Produce modifier classes
-    @for $i from 1 through $columns - 1
-    {
-        .#{$prefix}-offset-#{$i}
-        {
+    @for $i from 1 through $columns - 1 {
+        .#{$prefix}-offset-#{$i} {
             @include grid-offset($grid, $i);
         }
 
-        .#{$prefix}-push-#{$i}
-        {
+        .#{$prefix}-push-#{$i} {
             @include grid-push($grid, $i);
         }
 
-        .#{$prefix}-pull-#{$i}
-        {
+        .#{$prefix}-pull-#{$i} {
             @include grid-pull($grid, $i);
         }
     }
@@ -59,27 +53,20 @@
 @mixin grid-row($grid, $clearfix: true) {
     $gutter: map-get($grid, gutter);
 
-    margin-left: $gutter*-0.5%;
-    margin-right: $gutter*-0.5%;
+    margin-left: $gutter * -0.5;
+    margin-right: $gutter * -0.5;
 
     @if($clearfix) {
         // Clearfix (http://nicolasgallagher.com/micro-clearfix-hack/)
         &:before,
         &:after {
-            content: " "; /* 1 */
-            display: table; /* 2 */
+            display: table;
+
+            content: ' ';
         }
 
         &:after {
             clear: both;
-        }
-
-        /**
-         * For IE 6/7 only
-         * Include this rule to trigger hasLayout and contain floats.
-         */
-        & {
-            *zoom: 1;
         }
     }
 }
@@ -95,8 +82,8 @@
     // Properties common to all columns
     float: left;
 
-    margin-left: $gutter*0.5%;
-    margin-right: $gutter*0.5%;
+    padding-left: $gutter * 0.5;
+    padding-right: $gutter * 0.5;
 
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -135,13 +122,12 @@
 
         // Extend the placholder for the common properties;
         @extend %#{$placeholder-selector};
-    }
-    @else {
+    } @else {
         @include grid-col-common($grid);
     }
 
     // Set the width
-    width: grid-col-width($count, $columns, $gutter);
+    width: grid-col-width($count, $columns);
 }
 
 
@@ -153,9 +139,8 @@
 // @include grid-offset($small-grid, 2)
 @mixin grid-offset($grid, $count) {
     $columns: map-get($grid, columns);
-    $gutter: map-get($grid, gutter);
 
-    margin-left: grid-col-width($count, $columns, $gutter) + $gutter;
+    margin-left: grid-col-width($count, $columns);
 }
 
 
@@ -167,11 +152,10 @@
 // @include grid-push($small-grid, 2)
 @mixin grid-push($grid, $count) {
     $columns: map-get($grid, columns);
-    $gutter: map-get($grid, gutter);
 
     position: relative;
     right: auto;
-    left: grid-col-width($count, $columns, $gutter) + $gutter;
+    left: grid-col-width($count, $columns);
 }
 
 
@@ -183,11 +167,10 @@
 // @include grid-pull($small-grid, 2)
 @mixin grid-pull($grid, $count) {
     $columns: map-get($grid, columns);
-    $gutter: map-get($grid, gutter);
 
     position: relative;
     left: auto;
-    right: grid-col-width($count, $columns, $gutter) + $gutter;
+    right: grid-col-width($count, $columns);
 }
 
 

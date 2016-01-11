@@ -1,4 +1,4 @@
-// Fluid Grid by Joe Lambert 
+// Fluid Grid by Joe Lambert
 // (c) 2013 Rareloop Ltd (http://www.rareloop.com)
 
 
@@ -11,13 +11,13 @@ $grid-col-placeholder-selectors: ();
 
 // Variable defaults
 $small-grid: (
-	prefix: 'small',
-	columns: 12,
-	gutter: 2
+    prefix: 'small',
+    columns: 12,
+    gutter: 16px
 ) !default !global;
 
 $large-grid: (
-	prefix: 'large',
-	columns: 12,
-	gutter: 2
+    prefix: 'large',
+    columns: 12,
+    gutter: 16px
 ) !default !global;

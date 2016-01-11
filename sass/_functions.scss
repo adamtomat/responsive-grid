@@ -1,6 +1,5 @@
-// Fluid Grid by Joe Lambert 
+// Fluid Grid by Joe Lambert
 // (c) 2013 Rareloop Ltd (http://www.rareloop.com)
-
 
 // Get the width of a number of columns including inner gutters
 // @function  grid-col-width
@@ -8,19 +7,38 @@
 // @param     $columns {Number} the number of columns in the grid
 // @param     $gutter {Number} the size of the gutter
 // @return    {Number} the percentage width
-@function grid-col-width($count, $columns, $gutter: 0) {
-    $single-width: grid-single-col-width($columns, $gutter);
-
-    @return ($count * $single-width) + (($count - 1) * $gutter);
+@function grid-col-width($count, $columns) {
+    @return percentage($count / $columns);
 }
 
+// Get the correct width of a number of columns when the parent container is less than the inner width
+// This ensures elements line up properly with the grid, when used within a contained element.
+//
+// For example. Using the grid inside of a div that is 9 columns wide will be wrong because the column
+// widths are percentage based and would be relative to the contrained width, not the inner-max-width.
+//
+// For example:
+// 6 cols would be 50% of 1200px (inner-max-width)
+// If you have 6 cols inside of an 9 column container, you'd actually be asking for 50% of 900px (1200 * 0.75),
+// which is wrong.
+//
+// Max width usage example:
+// max-width: grid-contained-col-width($large-grid, 8, 9);
+// This gets you the correct width for 8 columns, when its parent is already 9 columns wide
+//
+// @function grid-contained-col-width
+// @param $grid {Map} the grid map used to set up the grid
+// @param $cols {Number} the number of columns you want the width for
+// @param $colsContainer {Number} the number of columns the container is
+// @param $negative {Boolean} Setting this to true will invert the returned calc, which allows for pulling out by x columns
+@function grid-contained-col-width($grid, $cols, $colsContainer, $negative: false) {
+    $gutter: map-get($grid, gutter);
 
-// Get the width of a single column, not including any gutter
-// @function  grid-single-col-width
-// @param     $columns {Number} the number of columns in the grid
-// @param     $gutter {Number} the size of the gutter
-// @return    {Number} the percentage width
-@function grid-single-col-width($columns, $gutter: 0) {
-    @return (100% - ($columns * $gutter)) / $columns;
+    @if $negative == true {
+        // -(parent's width after being pulled out) * (relative column width)
+        @return calc(-1 * (100% + #{$gutter}) * (#{$cols} / #{$colsContainer}));
+    } @else {
+        // (parent's width after being pulled out) * (relative column width) - gutter
+        @return calc((100% + #{$gutter}) * (#{$cols} / #{$colsContainer}) - #{$gutter});
+    }
 }
-

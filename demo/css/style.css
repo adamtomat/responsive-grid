@@ -1,62 +1,54 @@
 .small-row {
-  margin-left: -1%;
-  margin-right: -1%;
-  /**
-   * For IE 6/7 only
-   * Include this rule to trigger hasLayout and contain floats.
-   */ }
+  margin-left: -8px;
+  margin-right: -8px; }
   .small-row:before, .small-row:after {
-    content: " ";
-    /* 1 */
     display: table;
-    /* 2 */ }
+    content: ' '; }
   .small-row:after {
     clear: both; }
-  .small-row {
-    *zoom: 1; }
 
 .small-col-1 {
-  width: 6.33333%; }
+  width: 8.33333%; }
   .small-col-1, .small-col-2, .small-col-3, .small-col-4, .small-col-5, .small-col-6, .small-col-7, .small-col-8, .small-col-9, .small-col-10, .small-col-11, .small-col-12 {
     float: left;
-    margin-left: 1%;
-    margin-right: 1%;
+    padding-left: 8px;
+    padding-right: 8px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
 
 .small-col-2 {
-  width: 14.66667%; }
+  width: 16.66667%; }
 
 .small-col-3 {
-  width: 23%; }
+  width: 25%; }
 
 .small-col-4 {
-  width: 31.33333%; }
+  width: 33.33333%; }
 
 .small-col-5 {
-  width: 39.66667%; }
+  width: 41.66667%; }
 
 .small-col-6 {
-  width: 48%; }
+  width: 50%; }
 
 .small-col-7 {
-  width: 56.33333%; }
+  width: 58.33333%; }
 
 .small-col-8 {
-  width: 64.66667%; }
+  width: 66.66667%; }
 
 .small-col-9 {
-  width: 73%; }
+  width: 75%; }
 
 .small-col-10 {
-  width: 81.33333%; }
+  width: 83.33333%; }
 
 .small-col-11 {
-  width: 89.66667%; }
+  width: 91.66667%; }
 
 .small-col-12 {
-  width: 98%; }
+  width: 100%; }
 
 .small-offset-1 {
   margin-left: 8.33333%; }
@@ -231,64 +223,56 @@ span.large {
 
 @media screen and (min-width: 40.5em) {
   .large-row {
-    margin-left: -1%;
-    margin-right: -1%;
-    /**
-     * For IE 6/7 only
-     * Include this rule to trigger hasLayout and contain floats.
-     */ }
+    margin-left: -8px;
+    margin-right: -8px; }
     .large-row:before, .large-row:after {
-      content: " ";
-      /* 1 */
       display: table;
-      /* 2 */ }
+      content: ' '; }
     .large-row:after {
       clear: both; }
-    .large-row {
-      *zoom: 1; }
 
   .large-col-1 {
-    width: 6.33333%; }
+    width: 8.33333%; }
     .large-col-1, .large-col-2, .large-col-3, .large-col-4, .large-col-5, .large-col-6, .large-col-7, .large-col-8, .large-col-9, .large-col-10, .large-col-11, .large-col-12 {
       float: left;
-      margin-left: 1%;
-      margin-right: 1%;
+      padding-left: 8px;
+      padding-right: 8px;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box; }
 
   .large-col-2 {
-    width: 14.66667%; }
+    width: 16.66667%; }
 
   .large-col-3 {
-    width: 23%; }
+    width: 25%; }
 
   .large-col-4 {
-    width: 31.33333%; }
+    width: 33.33333%; }
 
   .large-col-5 {
-    width: 39.66667%; }
+    width: 41.66667%; }
 
   .large-col-6 {
-    width: 48%; }
+    width: 50%; }
 
   .large-col-7 {
-    width: 56.33333%; }
+    width: 58.33333%; }
 
   .large-col-8 {
-    width: 64.66667%; }
+    width: 66.66667%; }
 
   .large-col-9 {
-    width: 73%; }
+    width: 75%; }
 
   .large-col-10 {
-    width: 81.33333%; }
+    width: 83.33333%; }
 
   .large-col-11 {
-    width: 89.66667%; }
+    width: 91.66667%; }
 
   .large-col-12 {
-    width: 98%; }
+    width: 100%; }
 
   .large-offset-1 {
     margin-left: 8.33333%; }
@@ -443,3 +427,5 @@ span.large {
 
   span.large {
     display: block; } }
+
+/*# sourceMappingURL=style.css.map */
