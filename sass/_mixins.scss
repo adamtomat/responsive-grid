@@ -183,3 +183,42 @@
     margin-right: auto !important;
     float: none !important;
 }
+
+
+// Creates the required styles to draw grid lines on an element
+// The class must be applied to something higher up than the row
+// as the row is slightly larger than the container.
+@mixin show-grid($grid, $col-color: #ccc, $gutter-color: transparent) {
+    $bg: linear-gradient(transparent, transparent);
+    $gutter: map-get($small-grid, gutter);
+    $columns: map-get($small-grid, columns);
+    $col-width: percentage(1 / $columns);
+
+    @for $col from 1 through $columns {
+        $offset: percentage(($col - 1) / $columns);
+        $bg: join($bg, linear-gradient(
+            90deg, 
+            transparent,
+            transparent calc(#{$col - 1} * #{$col-width}),
+            $gutter-color calc(#{$col - 1} * #{$col-width}),
+            $gutter-color calc((#{$col - 1} * #{$col-width}) + (0.5 * #{$gutter})),
+            $col-color calc((#{$col - 1} * #{$col-width}) + (0.5 * #{$gutter})),
+            $col-color calc((#{$col - 1} * #{$col-width}) + (0.5 * #{$gutter}) + #{$col-width} - (1 * #{$gutter})),
+            transparent calc((#{$col - 1} * #{$col-width}) + (0.5 * #{$gutter}) + #{$col-width} - (1 * #{$gutter}))), comma);
+    }
+
+    position: relative;
+
+    &:before {
+        position: absolute;
+        top: 0;
+        left: -0.5 * $gutter;
+        width: calc(100% + (#{$gutter}));
+        height: 100%;
+
+        z-index: -1;
+
+        background: $bg;
+        content: '';
+    }
+}
