@@ -33,12 +33,13 @@
 // @param $negative {Boolean} Setting this to true will invert the returned calc, which allows for pulling out by x columns
 @function grid-contained-col-width($grid, $cols, $colsContainer, $negative: false) {
     $gutter: map-get($grid, gutter);
+    $width: '(100% + #{$gutter}) * (#{$cols} / #{$colsContainer})';
 
     @if $negative == true {
         // -(parent's width after being pulled out) * (relative column width)
-        @return calc(-1 * (100% + #{$gutter}) * (#{$cols} / #{$colsContainer}));
+        @return calc(-1 * #{$width});
     } @else {
         // (parent's width after being pulled out) * (relative column width) - gutter
-        @return calc((100% + #{$gutter}) * (#{$cols} / #{$colsContainer}) - #{$gutter});
+        @return calc(#{$width} - #{$gutter});
     }
 }
