@@ -190,14 +190,14 @@
 // as the row is slightly larger than the container.
 @mixin show-grid($grid, $col-color: #ccc, $gutter-color: transparent) {
     $bg: linear-gradient(transparent, transparent);
-    $gutter: map-get($small-grid, gutter);
-    $columns: map-get($small-grid, columns);
+    $gutter: map-get($grid, gutter);
+    $columns: map-get($grid, columns);
     $col-width: percentage(1 / $columns);
 
     @for $col from 1 through $columns {
         $offset: percentage(($col - 1) / $columns);
         $bg: join($bg, linear-gradient(
-            90deg, 
+            90deg,
             transparent,
             transparent calc(#{$col - 1} * #{$col-width}),
             $gutter-color calc(#{$col - 1} * #{$col-width}),
